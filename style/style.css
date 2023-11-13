@@ -1,0 +1,37 @@
+:root{
+    --primary-color: #FF28A5;
+    --primary-color-hover: #ff46b2;
+    --background-color: #FAFAFA;
+    --secondary-color: #F5F5F5;
+    --fuente-principal: 'Lato', sans-serif;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+.center-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
