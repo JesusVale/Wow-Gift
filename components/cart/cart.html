@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="./components/cart/cart.css">
+<aside class="cart">
+    <button class="cart__button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M17 17h-11v-14h-2"></path>
+            <path d="M6 5l14 1l-1 7h-13"></path>
+         </svg>
+    </button>
+    <div class="cart__card">
+        <header class="cart__header">
+            <button class="cart__exit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="icon icon-tabler icon-tabler-x" stroke-width="2" stroke="rgba(0, 0, 0, 0.5)" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="5 5 14 14">    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>    <path d="M18 6l-12 12"></path>    <path d="M6 6l12 12"></path> </svg>
+            </button>
+            <h2 class="cart__heading">Mi Carrito</h2>
+        </header>
+        
+        <ul class="cart__products"></ul>
+        <div class="cart__menu">
+            <div class="cart-product__total">
+                <span class="cart-product__totalTitle">Total:</span>
+                <span class="cart-product__totalPrice">$722</span>
+            </div>
+
+            <a href="#" class="cart-product__pago">Realizar Pago</a>
+
+        </div>
+
+    </div>
+    
+</aside>
+
+<template id="productcmp">
+    <li class="cart-product">
+        <div class="cart-product__image">
+            <img src="https://s3.amazonaws.com/images.ecwid.com/images/22217770/1287930422.jpg" alt="Producto X" class="cart-product__img">
+        </div>
+        <div class="cart-product__info">
+            <div class="cart-product__titles">
+                
+                <span class="cart-product__name">Nombre Producto</span>
+                <button class="cart-product__remove">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" class="icon icon-tabler icon-tabler-x" stroke-width="2" stroke="rgba(0, 0, 0, 0.5)" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="5 5 14 14">    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>    <path d="M18 6l-12 12"></path>    <path d="M6 6l12 12"></path> </svg>
+                </button>
+            </div>
+            
+            <div class="cart-product__more">
+                <span class="cart-product__price">$244</span>
+                <form class="cart-product__quantity">
+                    <button class="cart-product__qbutton cart-product__qbutton--add">+</button>
+                    <input type="number" min="1" max="20" value="1" class="cart-product__input">
+                    <button class="cart-product__qbutton cart-product__qbutton--remove">-</button>
+                </form>
+            </div>
+        </div>
+    </li> 
+</template>
