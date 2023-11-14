@@ -1,0 +1,50 @@
+.signup__card {
+    min-width: fit-content;
+    position: relative;
+    width: 450px;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    background-color: white;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.signup__header{
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup__heading{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    color: #FF28A5;
+    font-weight: bold;
+}
+
+.signup__form{
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem
+}
+
+.sign-button{
+    width: 100%;
+    background-color: #FF28A5;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.6rem 0.5rem;
+    text-align: center;
+    border-radius: 1rem;
+    border: none;
+    transition: background-color .3s;
+    margin-top: 1.5rem;
+}
+
+.sign-button:hover{
+    background-color: #ff46b2;
+    cursor: pointer;
+}
