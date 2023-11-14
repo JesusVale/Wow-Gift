@@ -1,0 +1,84 @@
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h2, h3, p {
+    margin: 0;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+.articles-sample{
+    width: fit-content;
+    max-width: 75%;
+    margin: 5rem auto;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+
+}
+
+.articles-sample__titles{
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-end;   
+}
+
+.articles-sample__container{
+    width: fit-content;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.articles-sample__link{
+    color: #0075FF;
+    font-size: 1rem;
+}
+
+img{
+    max-width: 200px;
+    height: 200px;
+    display: block;
+}
+
+.article-sample{
+    background-color: white;
+    min-width: 200px;
+    padding: 1rem;
+    max-height: 350px;
+    gap: 1rem;
+}
+
+.article-sample__link{
+    display: grid;
+    height: 100%;
+    grid-template-rows: 2r 1fr;
+    gap: 0.6rem;
+}
+
+.article-sample__star{
+    width: 20px;
+    height: 20px;
+    fill: #FFA41C;
+}
+
+.article-sample__info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.article-sample__name{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.article-sample__price{
+    font-size: 2rem;
+}
