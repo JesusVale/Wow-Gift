@@ -1,0 +1,66 @@
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+.toast{
+    width: fit-content;
+    position: absolute;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    left: 0; 
+    right: 0;
+    bottom: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    box-shadow: rgba(200, 33, 33, 0.35) 0px 5px 15px;
+    transform: translateY(-100%);
+    animation-name: moveup;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-duration: .3s;
+}
+
+.toast--success{
+    box-shadow: rgba(33, 200, 66, 0.35) 0px 5px 15px;
+}
+
+.toast::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 5px;
+    bottom: 0;
+    margin: 0 auto;
+    animation-name: barmove;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+    background: red;
+}
+
+.toast--success::after{
+    background: green;
+}
+
+@keyframes moveup{
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes barmove{
+    100%{
+        width: 0;
+    }
+}
