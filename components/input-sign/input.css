@@ -1,0 +1,30 @@
+.sign-input{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sign-input__icon{
+    position: absolute;
+    color: rgba(0, 0, 0, 0.5);
+    margin: auto 0.8rem;
+    top: 0;
+    bottom: 0;
+}
+
+.sign-input__input{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 0.4rem 2.6rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    border-radius: 0.4rem;
+}
+
+.sign-input__input:focus{
+    outline: none;
+}
+
+.sign-input__input::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+}
