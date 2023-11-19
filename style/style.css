@@ -1,8 +1,8 @@
 :root{
-    --primary-color: #FF28A5;
-    --primary-color-hover: #ff46b2;
-    --background-color: #FAFAFA;
-    --secondary-color: #F5F5F5;
+    --primary-color: #ffffff;
+    --primary-color-hover: #eaeaea;
+    --background-color: #EDEDED;
+    --secondary-color: #ff5bbb;
     --fuente-principal: 'Lato', sans-serif;
 }
 
@@ -30,8 +30,13 @@ a{
 }
 
 .center-container{
-    height: 100vh;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.grid-search {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
