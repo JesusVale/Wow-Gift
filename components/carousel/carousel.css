@@ -1,0 +1,139 @@
+a{
+    text-decoration: none;
+}
+
+.carousel{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel__item{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform .3s;
+    transform: translateX(-100%);
+    
+}
+
+.carousel > .carousel__controls {
+    opacity: 0;
+}
+
+.carousel:hover > .carousel__controls {
+    opacity: 1;
+}
+
+.initial-item{
+    transform: translateX(0);
+    z-index: 20;
+}
+
+.carousel-center{  
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.carousel-center--birthday{
+    background-color: #a0b5db;
+}
+
+.carousel-center--anniversary{
+    background-color: #dc9898;
+}
+
+.carousel-center__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.carousel-center__heading{
+    margin: 0;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3rem;
+}
+
+.carousel-center__button{
+    font-family: 'Lato', sans-serif;
+    width: 250px;
+    color: white;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.carousel-center__button--birthday{
+    background-color: #FF28A5;
+}
+
+.carousel-center__button--anniversary {
+    background-color: #A51111;
+}
+
+.carousel-center__image {
+    width: 150px;
+    height: 150px;
+}
+
+.carousel__control{
+    position: absolute;
+    margin: auto 0;
+    height: fit-content;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.carousel__control:hover{
+    cursor: pointer;
+}
+
+.carousel__control--next{
+    right: 20px;
+}
+
+.carousel__control--previous{
+    left: 20px;
+}
+
+.show-item{
+    animation: slideShow .8s forwards ease-in-out;
+}
+
+.hide-next{
+    animation: slideNext .8s forwards  ease-in-out;
+}
+
+.reverse-direction{
+    animation-direction: reverse;
+}
+
+@keyframes slideNext{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideShow{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
