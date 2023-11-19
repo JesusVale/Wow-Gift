@@ -1,4 +1,4 @@
-html{
+html {
     box-sizing: border-box;
 }
 
@@ -6,13 +6,13 @@ html{
     box-sizing: inherit;
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit
 }
 
-.header{
-    padding: 0.7em 4rem;
+.header {
+    padding: 0.5rem 4rem;
     background-color: var(--secondary-color);
     width: 100%;
     display: flex;
@@ -20,15 +20,15 @@ a{
     gap: 5rem;
 }
 
-.header__sign{
+.header__sign {
     font-family: var(--fuente-principal);
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-.header__login{
-    color: var(--primary-color)
+.header__login {
+    color: var(--primary-color);
 }
 
 .buscador{
@@ -37,30 +37,19 @@ a{
     flex-grow: 1;
 }
 
-.buscador__input{
-    border: none;
-    width: 100%;
-    font-family: var(--fuente-principal);
-    padding: 0.6rem 1.2rem;
-
-}
-
-.buscador__boton{
-    background-color: var(--primary-color);
-    border: none;
-    color: white;
-}
-
-.buscador__input:focus{
-    outline: none;
-}
-
 .header__signup{
     background-color: var(--primary-color);
-    color: white;
+    display: inline-block;
+    color: #FF28A5;
     padding: 0.5rem 0.7rem;
     border-radius: 1rem;
     transition: background-color .3s;
+}
+
+.header__signup:hover{
+    background-color: var(--primary-color-hover);
+    border-radius: 1rem;
+    cursor: pointer;
 }
 
 .header__signup:hover{
@@ -69,7 +58,7 @@ a{
 
 .header__enter{
     display: flex;
-    color: #FF28A5;
+    color: #ffffff;
     align-items: center;
     gap: 1.5rem;
     font-family: 'Lato', sans-serif;
@@ -79,12 +68,15 @@ a{
 .menu-cuenta{
     position: relative;
     padding: 0.8rem 0;
+    color: #FF28A5;
+    z-index: 70;
 }
 
 .menu-cuenta__trigger{
     display: flex;
     align-items: center;
     gap: 0.2rem;
+    color: white;
 }
 
 .menu-cuenta__trigger:hover{
@@ -175,7 +167,11 @@ a{
 .buscador__boton{
     background-color: var(--primary-color);
     border: none;
-    color: white;
+    border-left: 1px solid rgba(0, 0, 0, 0.192);
+    padding: 0 0.7rem;
+    color: #FF28A5;
+    display: flex;
+    align-items: center;
 }
 
 .buscador__input:focus{

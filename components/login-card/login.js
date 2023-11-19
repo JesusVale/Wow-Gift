@@ -36,8 +36,8 @@ export default class LoginCard extends HTMLElement{
             sessionStorage.setItem("token", info.token);
             localStorage.setItem("user", info.usuario.nombre);
             localStorage.setItem("type", info.usuario.tipo);
-            window.location.href = "/index.html"
-
+            page.redirect("/")
+            form.dispatch("sessionChange");
         })
     }
 }

@@ -26,9 +26,11 @@ export default class HeaderComponent extends HTMLElement{
                 
                 this.#setUsername(shadow);
                 this.#setEventListeners(shadow);
+                this.#setFormEvent(shadow);
                 return;
             }
             shadow.innerHTML = headerSignOut;
+            this.#setFormEvent(shadow);
         } catch(error){
             console.log("error Loading html" + error)
         }
@@ -49,6 +51,20 @@ export default class HeaderComponent extends HTMLElement{
 
             this.#render(shadow);
 
+        })
+
+        this.addEventListener("sessionChange", () =>{
+            
+        })
+    }
+
+    #setFormEvent(shadow){
+        const form = shadow.querySelector(".buscador");
+        const search = shadow.querySelector(".buscador__input")
+        form.addEventListener("submit", (e) =>{
+            e.preventDefault();
+            const value = search.value;
+            page.redirect("/search?k=" + encodeURIComponent(value))
         })
     }
 

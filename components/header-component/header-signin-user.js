@@ -1,8 +1,10 @@
 export const headerSignInUser = `<link rel="stylesheet" href="./components/header-component/header.css">
 <header class="header">
-    <div class="header__logo">
-        <img src="./components/header-component/img/logo.svg" width="100" height="64" alt="Logo Wow Gift">
-    </div>
+    <a href="/">
+        <div class="header__logo">
+            <img src="./components/header-component/img/logo.svg" width="100" height="64" alt="Logo Wow Gift">
+        </div>
+    </a>
 
     <form action="/search" class="buscador">
         <input type="search" name="k" placeholder="Buscar Articulo" class="buscador__input">
@@ -69,7 +71,7 @@ export const headerSignInUser = `<link rel="stylesheet" href="./components/heade
     
             </ul>
         </nav>
-        <a href="/compras.html" class="header__link">Mis Compras</a>
+        <a href="/compras" class="header__link">Mis Compras</a>
         <cart-component></cart-component>
     </div>
 
