@@ -1,0 +1,80 @@
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.filtros{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: fit-content;
+}
+
+.filtros__titulo{
+    color: #FF28A5;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.filtros__categoria{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filtros__ratings{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.prices{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.prices__item {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+}
+
+.price-form{
+    display: flex;
+    gap: 0.4rem;
+}
+
+.price-form__input{
+    font-family: 'Lato', sans-serif;
+    width: 60px;
+    appearance: none;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.266);
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+
+.price-form__input:focus{
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.485);
+}
+
+.price-form__submit{
+    background-color: #FF28A5;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.3rem 0.6rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

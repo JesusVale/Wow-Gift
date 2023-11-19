@@ -45,9 +45,31 @@ async function obtenerArticulosPorCategoria(categoria){
     return articulos;    
 }
 
+async function obtenerArticulosPorBusqueda(search){
+    const reponse = await fetch(`${URL}/articulos/search/nombre/?s=${search}`)
+    const articulos = await reponse.json();
+    return articulos;    
+}
+
+async function obtenerArticulosPorRating(rating){
+    const reponse = await fetch(`${URL}/articulos/search/rating/${rating}`)
+    const articulos = await reponse.json();
+    return articulos; 
+}
+
+async function obtenerArticulosPorPrecio(min, max){
+    console.log(min);
+    const reponse = await fetch(`${URL}/articulos/search/precio?min=${min}&max=${max}`)
+    const articulos = await reponse.json();
+    return articulos; 
+}
+
 export {
     obtenerCarrito,
     login,
     registrarUsuario,
-    obtenerArticulosPorCategoria
+    obtenerArticulosPorCategoria,
+    obtenerArticulosPorBusqueda,
+    obtenerArticulosPorRating,
+    obtenerArticulosPorPrecio
 }

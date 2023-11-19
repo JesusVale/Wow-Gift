@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="./components/filters-section/filters.css">
+<section class="filtros">
+
+    <div class="filtros__categoria">
+        <span class="filtros__titulo">Categoria</span>
+        <select-component></select-component>
+    </div>
+
+    <div class="filtros__categoria">
+        <span class="filtros__titulo">Por Calificación</span>
+        <div class="filtros__ratings">
+            <a href="/search?rating=5">
+                <stars-component size="20px" rating="5"></stars-component>
+            </a>
+            <a href="/search?rating=4">
+                <stars-component size="20px" rating="4"></stars-component>
+            </a>
+            <a href="/search?rating=3">
+                <stars-component size="20px" rating="3"></stars-component>
+            </a>
+            <a href="/search?rating=2">
+                <stars-component size="20px" rating="2"></stars-component>
+            </a>
+            <a href="/search?rating=1">
+                <stars-component size="20px" rating="1"></stars-component>
+            </a>
+        </div>
+    </div>
+
+    <div class="filtros__categoria">
+        <span class="filtros__titulo">Precio</span>
+        <ul class="prices">
+            <li class="prices__item"><a href="/search?max=200" class="prices__link">Hasta $200</a></li>
+            <li class="prices__item"><a href="/search?min=200&max=500" class="prices__link">$200 a $500</a></li>
+            <li class="prices__item"><a href="/search?min=500&max=1000" class="prices__link">$500 a $1000</a></li>
+            <li class="prices__item"><a href="/search?min=1000&max=3000" class="prices__link">$1000 a $3000</a></li>
+            <li class="prices__item"><a href="/search?min=3000" class="prices__link">Más de $3000</a></li>
+        </ul>
+    </div>
+
+    <form class="price-form">
+        <input type="number" name="min" placeholder="$Min" class="price-form__input">
+        <input type="number" name="max" placeholder="$Max" class="price-form__input">
+        <button class="price-form__submit">ir</button>
+    </form>
+
+</section>
