@@ -1,0 +1,45 @@
+.select{
+    display: flex;
+    background-color: white;
+    width: fit-content;
+    align-items: center;
+    position: relative;
+    
+    border: 1px solid rgba(0, 0, 0, 0.255);
+}
+
+.select__control{
+    appearance: none;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.4rem 2.8rem 0.4rem 0.8rem;
+    width: 100%;
+    
+}
+
+.select__control:focus{
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.452);
+}
+
+.select__control:focus + .select__icon > svg{
+    transform: rotate(180deg);
+}
+
+.select__icon > svg{
+    transition: transform .3s ease-in-out;
+    transform: rotate(0);
+}
+
+.select__icon{
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    right: 0.5rem;
+}
