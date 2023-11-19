@@ -19,15 +19,15 @@ export default class StarsComponent extends HTMLElement{
             const response = await fetch("./components/stars/stars.html");
             const html = await response.text();
             shadow.innerHTML += html;
-            this.#renderStars(shadow);
+            this.#renderStars();
         } catch(error){
             console.log("error Loading html" + error)
         }
     }
 
-    async #renderStars(shadow){
-        const template = shadow.querySelector("#star-icon");
-        const contenedor = shadow.querySelector(".stars");
+    #renderStars(){
+        const template = this.shadowRoot.querySelector("#star-icon");
+        const contenedor = this.shadowRoot.querySelector(".stars");
         let rating = 5;
         if(this.getAttribute("rating") && !isNaN(this.getAttribute("rating"))){
             rating = Number(this.getAttribute("rating"));
@@ -37,12 +37,11 @@ export default class StarsComponent extends HTMLElement{
             let clone = template.content.cloneNode(true);
             const icon = clone.querySelector(".stars__star");
             if(rating >= i){
-                console.log(rating);
                 icon.classList.add("stars__star--fill");
             }
             contenedor.appendChild(icon);
         }
 
-    }
+    }  
 
 }
