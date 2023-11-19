@@ -27,7 +27,7 @@ export default class ArticlesSample extends HTMLElement{
         const link = shadow.querySelector(".articles-sample__link");
         const heading = shadow.querySelector(".articles-sample__heading")
         heading.textContent = title;
-        link.href = `/search.html/?categoria=${categoria}`
+        link.href = `/search?category=${categoria}`
     }
 
     async #cargarArticulos(shadow){
@@ -42,7 +42,7 @@ export default class ArticlesSample extends HTMLElement{
             const priceElement = clone.querySelector(".article-sample__price");
             const imageElement = clone.querySelector(".article-sample__img");
             nombreElement.textContent = nombre;
-            ratingElement.rating = rating;
+            ratingElement.setAttribute("rating", rating);
             priceElement.textContent = `$${precio}`;
             imageElement.src = imagen; 
             contenedor.appendChild(clone);

@@ -1,5 +1,6 @@
+
 const categorias = {
-    cumpleaños: "Cumpleaños",
+    "birthday": "Cumpleaños",
     "aniversarios": "Aniversarios",
     "bodas": "Bodas",
     "san-valentin": "San Valentin",
@@ -7,7 +8,7 @@ const categorias = {
     "graduaciones": "Graduaciones",
     "para-hombre": "Para Hombre",
     "para-mujer": "Para Mujer",
-    comida: "Comida"
+    "comida": "Comida"
 }
 
 export default class CategoryNav extends HTMLElement{
@@ -47,8 +48,8 @@ export default class CategoryNav extends HTMLElement{
         Object.entries(categorias).forEach(([key, categoria]) =>{
             let clone = template.content.cloneNode(true)
             const link = clone.querySelector(".categories-menu__link")
+            link.href= `/search?category=${key}`
             link.textContent = categoria;
-            link.href= `/search.html?category=${key}`
             contenedor.appendChild(clone);
         })
     }

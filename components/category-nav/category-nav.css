@@ -34,6 +34,7 @@ a{
 .categories-menu__list{
     display: none;
     position: absolute;
+    z-index: 50;
     list-style-type: none;
     padding: 0;
     background-color: rgb(33, 33, 33);

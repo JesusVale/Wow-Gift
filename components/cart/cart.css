@@ -13,6 +13,7 @@ a{
     bottom: 0;
     right: 0;
     display: none;
+    z-index: 70;
 }
 
 .cart__card--show{
@@ -22,7 +23,7 @@ a{
 .cart__button{
     background-color: transparent;
     border: none;
-    color: #FF28A5;
+    color: #ffffff;
 }
 
 .cart__button:hover{
