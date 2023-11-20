@@ -11,7 +11,10 @@ export default class HeaderComponent extends HTMLElement{
 
     connectedCallback(){
         const shadow = this.attachShadow({mode: "open"});
-        this.#render(shadow)
+        this.#render(shadow);
+        window.addEventListener("sessionChange", () =>{
+            this.#render(shadow);
+        })
     }
 
     async #render(shadow){
@@ -44,17 +47,12 @@ export default class HeaderComponent extends HTMLElement{
     async #setEventListeners(shadow){
         const exitBtn = shadow.querySelector(".menu-cuenta__link--salir");
         exitBtn.addEventListener("click", () =>{
-
             sessionStorage.removeItem("token");
             localStorage.removeItem("user");
             localStorage.removeItem("type");
 
             this.#render(shadow);
 
-        })
-
-        this.addEventListener("sessionChange", () =>{
-            
         })
     }
 

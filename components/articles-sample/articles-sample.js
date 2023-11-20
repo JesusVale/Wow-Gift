@@ -35,16 +35,18 @@ export default class ArticlesSample extends HTMLElement{
         const contenedor = shadow.querySelector(".articles-sample__container")
         const categoria = this.getAttribute("categoria") ?? "aniversarios";
         const articulos = await obtenerArticulosPorCategoria(categoria);
-        articulos.slice(0, 5).forEach(({nombre, imagen, precio, rating}) => {
+        articulos.slice(0, 5).forEach(({nombre, imagen, precio, rating, _id}) => {
             let clone = template.content.cloneNode(true);
             const nombreElement = clone.querySelector(".article-sample__name");
             const ratingElement = clone.querySelector("stars-component");
             const priceElement = clone.querySelector(".article-sample__price");
             const imageElement = clone.querySelector(".article-sample__img");
+            const linkElement = clone.querySelector(".article-sample__link");
             nombreElement.textContent = nombre;
             ratingElement.setAttribute("rating", rating);
             priceElement.textContent = `$${precio}`;
-            imageElement.src = imagen; 
+            imageElement.src = imagen;
+            linkElement.href = `/article/${_id}` 
             contenedor.appendChild(clone);
         });
     }

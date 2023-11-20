@@ -1,0 +1,88 @@
+img{
+    max-width: 100%;
+    display: block;
+}
+
+.article{
+    display: grid;
+    height: 50vh;
+    grid-template-columns: 5fr 9fr;
+    gap: 3rem
+}
+
+.article__detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.1rem;
+}
+
+.article__name{
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 2.3rem;
+}
+
+.article__description{
+    color: rgb(105, 105, 105);
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.3rem;
+}
+
+.article__price{
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 2.2rem;
+}
+
+.article__addToCart{
+    color: white;
+    background-color: #FF28A5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    gap: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    transition: background-color .3s;
+}
+
+.article__addToCart:hover{
+    cursor: pointer;
+    background-color: #ff4cb5; 
+}
+
+.article__quantity{
+    display: flex;
+    gap: 0.6rem;
+}
+
+.article__select {
+    font-size: 1.1rem;
+    width: 40px;
+}
+
+.article__select:focus{
+    outline: none;
+}
+
+.article__label{
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+
+.article__image{
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.article__img{
+    height: 100%;
+    width: 100%;
+}

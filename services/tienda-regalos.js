@@ -39,6 +39,12 @@ async function registrarUsuario({nombre, tipo, email, password, telefono}){
     return usuario;
 }
 
+async function obtenerArticuloPorId(id){
+    const reponse = await fetch(`${URL}/articulos/${id}`)
+    const articulo = await reponse.json();
+    return articulo;    
+}
+
 async function obtenerArticulosPorCategoria(categoria){
     const reponse = await fetch(`${URL}/articulos/search/categoria/${categoria}`)
     const articulos = await reponse.json();
@@ -71,5 +77,6 @@ export {
     obtenerArticulosPorCategoria,
     obtenerArticulosPorBusqueda,
     obtenerArticulosPorRating,
-    obtenerArticulosPorPrecio
+    obtenerArticulosPorPrecio, 
+    obtenerArticuloPorId
 }

@@ -47,9 +47,8 @@ export default class SignupCard extends HTMLElement{
                 return;
             }
             //Mostrar Mensaje - Registrado con éxito
-            toast.showToast("Usuario Registrado Correctamente", "success", () =>{
-                window.location.href = "/index.html"
-            }, 2000)
+            toast.showToast("Usuario Registrado Correctamente", "success")
+            page.redirect("/");
             
 
         })

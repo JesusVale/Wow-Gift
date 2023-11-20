@@ -10,14 +10,7 @@ import CarouselComponent from "../components/carousel/carousel.js";
 import SelectComponent from "../components/select-component/select.js";
 import FiltersSection from "../components/filters-section/filters.js";
 import SearchComponent from "../components/search-section/search.js";
-
-// Set Events
-const myCustomEvent = new CustomEvent("sesionChange", {
-    detail: {
-        message: "Este es un evento personalizado",
-    }
-});
-
+import ArticleDetail from "../components/article-detail/article.js";
 
 customElements.define("header-component", HeaderComponent);
 customElements.define("category-nav", CategoryNav);
@@ -31,3 +24,4 @@ customElements.define("signup-card", SignupCard);
 customElements.define("articles-sample", ArticlesSample);
 customElements.define("carousel-component", CarouselComponent);
 customElements.define("search-component", SearchComponent);
+customElements.define("article-detail", ArticleDetail);

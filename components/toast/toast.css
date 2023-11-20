@@ -28,6 +28,7 @@ html{
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     animation-duration: .3s;
+    background-color: white;
 }
 
 .toast--success{

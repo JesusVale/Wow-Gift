@@ -2,7 +2,7 @@
     --primary-color: #ffffff;
     --primary-color-hover: #eaeaea;
     --background-color: #EDEDED;
-    --secondary-color: #ff5bbb;
+    --secondary-color: #FF28A5;
     --fuente-principal: 'Lato', sans-serif;
 }
 
@@ -39,4 +39,9 @@ a{
 .grid-search {
     display: grid;
     grid-template-columns: 2fr 10fr;
+}
+
+.container{
+    width: 75%;
+    margin: 4.5rem auto;
 }

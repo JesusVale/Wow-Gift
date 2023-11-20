@@ -23,6 +23,9 @@ export default class LoginCard extends HTMLElement{
 
     async #eventLogin(shadow){
         const form = shadow.querySelector(".login__form");
+        const sessionChangeEvent = new CustomEvent("sessionChange", {
+            bubbles: true
+        }) 
         form.addEventListener("submit", async (e) =>{
             e.preventDefault();
             const toast = shadow.querySelector("toast-component");
@@ -36,8 +39,9 @@ export default class LoginCard extends HTMLElement{
             sessionStorage.setItem("token", info.token);
             localStorage.setItem("user", info.usuario.nombre);
             localStorage.setItem("type", info.usuario.tipo);
-            page.redirect("/")
-            form.dispatch("sessionChange");
+            page.redirect("/");
+            
+            window.dispatchEvent(sessionChangeEvent);
         })
     }
 }

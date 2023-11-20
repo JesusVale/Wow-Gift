@@ -20,7 +20,8 @@ const PATHS = [
 
 document.addEventListener("DOMContentLoaded", () =>{
 
-	page("/search", cargarPaginaSearch)
+	page("/search", cargarPaginaSearch);
+	page("/article/:id", cargarPaginaArticle);
 	PATHS.forEach(({path, title, name}) =>{
 		page(path, async (ctx, next) => cargarPagina(name, title));
 	})
@@ -32,7 +33,7 @@ async function cargarPagina(name, title) {
 	const container = document.querySelector(".content");
 	
 	document.title = title;
-	const res = await fetch(`./pages/${name}.html`);
+	const res = await fetch(`/pages/${name}.html`);
 	const html = await res.text();
 
 	container.innerHTML = html
@@ -47,7 +48,7 @@ async function cargarPaginaSearch(ctx, next){
 
 	if(!searchComponent){
 		document.title = "Wow Gift | Buscar";
-		const res = await fetch(`./pages/search.html`);
+		const res = await fetch(`/pages/search.html`);
 		const html = await res.text();
 
 		container.innerHTML = html
@@ -55,6 +56,21 @@ async function cargarPaginaSearch(ctx, next){
 	}
 	
 	await searchComponent.setProductos(queryParams);
+	
+}
+
+async function cargarPaginaArticle(ctx, next){
+	const container = document.querySelector(".content");
+	container.innerHTML = "";
+	const wrapper = document.createElement("div");
+	const {id} = ctx.params;
+	const res = await fetch(`/pages/article.html`);
+	const html = await res.text();
+	wrapper.innerHTML = html;
+	const article = wrapper.querySelector("article-detail");
+	article.id = id;
+	container.appendChild(wrapper);
+	next();
 	
 }
 
