@@ -11,10 +11,13 @@ import SelectComponent from "../components/select-component/select.js";
 import FiltersSection from "../components/filters-section/filters.js";
 import SearchComponent from "../components/search-section/search.js";
 import ArticleDetail from "../components/article-detail/article.js";
+import ProgressBar from "../components/progress-bar/progress.js";
+import CommentSection from "../components/comment-section/comment.js";
 
 customElements.define("header-component", HeaderComponent);
 customElements.define("category-nav", CategoryNav);
 customElements.define("select-component", SelectComponent);
+customElements.define("progress-bar", ProgressBar);
 customElements.define("toast-component", ToastComponent);
 customElements.define("input-sign", InputSign);
 customElements.define("filters-section", FiltersSection);
@@ -25,3 +28,4 @@ customElements.define("articles-sample", ArticlesSample);
 customElements.define("carousel-component", CarouselComponent);
 customElements.define("search-component", SearchComponent);
 customElements.define("article-detail", ArticleDetail);
+customElements.define("comment-section", CommentSection);

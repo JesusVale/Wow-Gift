@@ -44,4 +44,6 @@ a{
 .container{
     width: 75%;
     margin: 4.5rem auto;
+    display: flex;
+    flex-direction: column;
 }

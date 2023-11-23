@@ -13,6 +13,44 @@ async function obtenerCarrito(token){
     return carrito;    
 }
 
+async function agregarArticuloCarrito(token, articulo){
+    const reponse = await fetch(`${URL}/carrito`, {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify({articulo, cantidad: 1})
+    })
+    const carrito = await reponse.json();
+    return carrito;   
+}
+
+async function actualizarArticuloCarrito(token, cantidad){
+    const reponse = await fetch(`${URL}/carrito`, {
+        method: 'PUT',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify({ cantidad })
+    })
+    const carrito = await reponse.json();
+    return carrito;   
+}
+
+async function eliminarArticuloCarrito(token, carrito){
+    const reponse = await fetch(`${URL}/carrito/${carrito}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    })
+    const carritoEliminar = await reponse.json();
+    return carritoEliminar; 
+}
+
 async function login(email, password){
     const reponse = await fetch(`${URL}/auth/login`, {
         method: `POST`,
@@ -64,10 +102,15 @@ async function obtenerArticulosPorRating(rating){
 }
 
 async function obtenerArticulosPorPrecio(min, max){
-    console.log(min);
     const reponse = await fetch(`${URL}/articulos/search/precio?min=${min}&max=${max}`)
     const articulos = await reponse.json();
     return articulos; 
+}
+
+async function obtenerComentariosPorArticulo(articulo){
+    const reponse = await fetch(`${URL}/comentarios/${articulo}`)
+    const comentarios = await reponse.json();
+    return comentarios; 
 }
 
 export {
@@ -78,5 +121,9 @@ export {
     obtenerArticulosPorBusqueda,
     obtenerArticulosPorRating,
     obtenerArticulosPorPrecio, 
-    obtenerArticuloPorId
+    obtenerArticuloPorId,
+    agregarArticuloCarrito,
+    actualizarArticuloCarrito,
+    eliminarArticuloCarrito,
+    obtenerComentariosPorArticulo
 }

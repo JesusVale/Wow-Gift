@@ -55,21 +55,32 @@ async function cargarPaginaSearch(ctx, next){
 		searchComponent = document.querySelector("search-component");
 	}
 	
-	await searchComponent.setProductos(queryParams);
+	customElements.whenDefined("search-component").then(() => {
+		searchComponent = document.querySelector("search-component");
+		const newSearchEvent = new CustomEvent("newSearch", {
+			bubbles: true,
+			detail: queryParams,
+		});
+
+		window.dispatchEvent(newSearchEvent);
+	});
 	
 }
 
 async function cargarPaginaArticle(ctx, next){
 	const container = document.querySelector(".content");
-	container.innerHTML = "";
-	const wrapper = document.createElement("div");
 	const {id} = ctx.params;
+	const wrapper = document.createElement("div")
 	const res = await fetch(`/pages/article.html`);
 	const html = await res.text();
 	wrapper.innerHTML = html;
 	const article = wrapper.querySelector("article-detail");
+	const comment = wrapper.querySelector("comment-section");
 	article.id = id;
-	container.appendChild(wrapper);
+	comment.id = id;
+	
+	container.innerHTML = wrapper.innerHTML;
+
 	next();
 	
 }

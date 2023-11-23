@@ -8,6 +8,12 @@ export default class StarsComponent extends HTMLElement{
     connectedCallback(){
         const shadow = this.attachShadow({mode: "open"})
         this.#render(shadow);
+         // Observador de atributos
+         const observer = new MutationObserver(() => {
+            this.#render(shadow);
+        });
+
+        observer.observe(this, { attributes: true, attributeFilter: ["rating"] });
     }
 
     async #render(shadow){
@@ -36,7 +42,6 @@ export default class StarsComponent extends HTMLElement{
         if(this.getAttribute("rating") && !isNaN(this.getAttribute("rating"))){
             rating = Number(this.getAttribute("rating"));
         }
-        console.log(rating);
         for(let i=1; i <= 5 ; i++){
             let clone = template.content.cloneNode(true);
             const icon = clone.querySelector(".stars__star");

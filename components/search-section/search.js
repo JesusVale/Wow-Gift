@@ -8,6 +8,11 @@ export default class SearchComponent extends HTMLElement{
     connectedCallback(){
         this.attachShadow({mode: "open"});
         this.#render();
+        window.addEventListener("newSearch", async (e) =>{
+            await this.#setProductos(e.detail);
+        })
+    
+        
     }
 
     async #render(){
@@ -20,24 +25,18 @@ export default class SearchComponent extends HTMLElement{
         }
     }
 
-    async setProductos({category, min, max, rating, k}){
+    async #setProductos({category, min, max, rating, k}){
         let productos = [];
         if(category){
             productos = await obtenerArticulosPorCategoria(category);
-        }
-
-        if(k){
+        } else if(k){
             productos = await obtenerArticulosPorBusqueda(k);
-        }
-
-        if(rating){
+        } else if(rating){
             productos = await obtenerArticulosPorRating(rating);
-        }
-
-        if(min || max){
+        } else if(min || max){
             productos = await obtenerArticulosPorPrecio(Number(min), Number(max));
         }
-        
+
         const template = this.shadowRoot.querySelector("#product");
         const container = this.shadowRoot.querySelector(".products");
         container.innerHTML = ""

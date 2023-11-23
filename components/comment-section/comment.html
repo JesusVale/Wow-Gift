@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/components/comment-section/comment.css">
+<section class="comentarios">
+    <div class="comentarios-rating">
+        <div class="comentarios-rating__flex">
+            <p class="comentarios-rating__average">4.6</p>
+            <div>
+                <stars-component rating="4" size="30px"></stars-component>
+                <p class="comentarios__total">5,034 Calificaciones</p>
+            </div>
+        </div>
+
+        <ul class="comentarios-rating__averages">
+
+        </ul>
+    </div>
+    
+    <div class="comentarios__main">
+        <h3 class="comentarios__title">Opiniones del Producto</h3>
+    </div>
+
+</section>
+<template id="star-bar">
+    <li class="comentarios-rating__average">
+        <progress-bar percentage="0"></progress-bar>
+        <p class="comentarios-rating__title">
+            <span class="comentarios-rating__number">0</span> <img src="/components/comment-section/icons/star.svg" width="15" height="15" alt="Star Icon">
+        </p>
+    </li>
+</template>
+<template id="comment-article">
+    <article class="comentario">
+        <div class="comentario__info">
+            <stars-component rating="4" size="20px"></stars-component>
+            <span class="comentario__fecha">21 de Noviembre 2023</span>
+        </div>
+        <p class="comentario__text">Me gusto mucho el producto, pero me gustaria más si estuviera en otro color</p>
+    </article>
+</template>
