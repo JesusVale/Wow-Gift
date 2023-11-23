@@ -1,4 +1,5 @@
-import { obtenerCarrito } from "../../services/tienda-regalos.js"
+import { obtenerCarrito, actualizarArticuloCarrito, eliminarArticuloCarrito } from "../../services/tienda-regalos.js"
+import { getToken } from "../../services/sessionService.js";
 
 export default class CartComponent extends HTMLElement{
 
@@ -9,15 +10,16 @@ export default class CartComponent extends HTMLElement{
     connectedCallback(){
         const shadow = this.attachShadow({mode: "open"})
         this.#render(shadow);
-        
-
+        window.addEventListener("addToCart", () =>{
+            this.#mostrarArticulos(shadow);
+        })
     }
 
     async #render(shadow){
         try{
-            const response = await fetch("./components/cart/cart.html");
-            const html = await response.text();
-            shadow.innerHTML = html;
+            const [responseHtml, responseTemplate] = await Promise.all([fetch("/components/cart/cart.html"), fetch("/components/cart/template-product.html")]);
+            const [html, template] = await Promise.all([responseHtml.text(), responseTemplate.text()]);
+            shadow.innerHTML = html + template;
             this.#toogleCart(shadow);
             this.#mostrarArticulos(shadow);
         } catch(error){
@@ -40,21 +42,30 @@ export default class CartComponent extends HTMLElement{
     }
 
     async #mostrarArticulos(shadow){
-        const productosCarrito = await obtenerCarrito(sessionStorage.getItem("token"));
+        const productosCarrito = await obtenerCarrito( getToken() );
         const contenedor = shadow.querySelector(".cart__products");
-        const template = shadow.querySelector("#productcmp")
+        const template = shadow.querySelector("#productcmp");
+
+        contenedor.innerHTML = ""
+
         productosCarrito.forEach(carrito => {
-            this.#obtenerArticulo(template, contenedor, carrito);
+            
+            this.#obtenerArticulo(template, contenedor, carrito, shadow);
         });
     }
 
-    async #obtenerArticulo(template, contenedor, carrito){
-        const {nombre, imagen, precio} = carrito.articulo;
+    async #obtenerArticulo(template, contenedor, carrito, shadow){
+        const {nombre, imagen, precio, _id} = carrito.articulo;
         let clone = template.content.cloneNode(true)
         const nombreElement = clone.querySelector(".cart-product__name");
         const precioElement = clone.querySelector(".cart-product__price");
         const imagenElement = clone.querySelector(".cart-product__img")
         const cantidadElement = clone.querySelector(".cart-product__input");
+        const deleteCartBtn = clone.querySelector(".cart-product__remove");
+        deleteCartBtn.addEventListener("click", async () =>{
+            await eliminarArticuloCarrito(getToken(), _id);
+            this.#mostrarArticulos(shadow);
+        })
         nombreElement.textContent = nombre;
         precioElement.textContent = precio;
         imagenElement.src = imagen;
