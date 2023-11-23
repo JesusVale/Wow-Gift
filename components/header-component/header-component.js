@@ -2,6 +2,7 @@ import CartComponent from "../cart/cart.js";
 import { headerSignIn } from "./header-signin.js";
 import { headerSignOut } from "./header-signout.js";
 import { headerSignInUser } from "./header-signin-user.js";
+import { getToken } from "../../services/sessionService.js";
 
 export default class HeaderComponent extends HTMLElement{
     constructor(){
@@ -19,7 +20,7 @@ export default class HeaderComponent extends HTMLElement{
 
     async #render(shadow){
         try{
-            const token = sessionStorage.getItem("token");
+            const token = getToken();
             if(token){
                 if(localStorage.getItem("type") === "Usuario"){
                     shadow.innerHTML = headerSignInUser

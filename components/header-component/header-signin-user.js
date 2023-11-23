@@ -1,8 +1,8 @@
-export const headerSignInUser = `<link rel="stylesheet" href="./components/header-component/header.css">
+export const headerSignInUser = `<link rel="stylesheet" href="/components/header-component/header.css">
 <header class="header">
     <a href="/">
         <div class="header__logo">
-            <img src="./components/header-component/img/logo.svg" width="100" height="64" alt="Logo Wow Gift">
+            <img src="/components/header-component/img/logo.svg" width="100" height="64" alt="Logo Wow Gift">
         </div>
     </a>
 

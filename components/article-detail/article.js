@@ -1,4 +1,5 @@
-import { obtenerArticuloPorId } from "../../services/tienda-regalos.js";
+import { obtenerArticuloPorId, agregarArticuloCarrito } from "../../services/tienda-regalos.js";
+import { getToken } from "../../services/sessionService.js";
 
 export default class ArticleDetail extends HTMLElement{
     constructor(){
@@ -17,6 +18,7 @@ export default class ArticleDetail extends HTMLElement{
             const html = await response.text();
             shadow.innerHTML = html;
             this.#setArticleData(shadow);
+            this.#setEventListeners(shadow);
         } catch(error){
             console.log("error Loading html" + error)
         }
@@ -38,10 +40,23 @@ export default class ArticleDetail extends HTMLElement{
 
         priceElement.textContent = precio;
 
-        ratingElement.rating = rating;
+        ratingElement.setAttribute("rating", rating)
 
         descriptionElement.textContent = descripcion;
 
+    }
+
+    async #setEventListeners(shadow) {
+        const addToCartButton = shadow.querySelector(".article__addToCart");
+        const articulo = this.getAttribute("id");
+        const token = getToken();
+        const addToCartEvent = new CustomEvent("addToCart", {
+            bubbles: true
+        }) 
+        addToCartButton.addEventListener("click", async (e) =>{
+            await agregarArticuloCarrito(token, articulo);
+            window.dispatchEvent(addToCartEvent);
+        })
     }
 
 }

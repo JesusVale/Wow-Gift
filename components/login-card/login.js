@@ -1,4 +1,6 @@
 import { login } from "../../services/tienda-regalos.js";
+import { setToken } from "../../services/sessionService.js";
+
 
 export default class LoginCard extends HTMLElement{
     constructor(){
@@ -36,7 +38,7 @@ export default class LoginCard extends HTMLElement{
                 toast.showToast(info.msg)
                 return;
             }
-            sessionStorage.setItem("token", info.token);
+            setToken(info.token)
             localStorage.setItem("user", info.usuario.nombre);
             localStorage.setItem("type", info.usuario.tipo);
             page.redirect("/");

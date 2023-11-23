@@ -5,7 +5,7 @@ img{
 
 .article{
     display: grid;
-    height: 50vh;
+    
     grid-template-columns: 5fr 9fr;
     gap: 3rem
 }
