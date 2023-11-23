@@ -1,0 +1,19 @@
+.comentarios-rating__bar{
+    height: 5px;
+    background-color: rgb(189, 189, 189);
+    border-radius: 20px;
+    position: relative;
+    width: 250px;
+}
+
+.comentarios-rating__progress{
+    position: absolute;
+    top: 0;
+    height: 6px;
+    bottom: 0;
+    background-color: rgb(99, 99, 99);
+    left: 0;
+    margin: auto 0;
+    width: 70%;
+    border-radius: 20px;
+}
