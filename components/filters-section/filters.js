@@ -24,6 +24,7 @@ export default class FiltersSection extends HTMLElement{
             const html = await response.text();
             shadow.innerHTML = html;
             this.#setFormPrecio(shadow);
+            this.#setSelectCategorias(shadow);
         } catch(error){
             console.log("error Loading html" + error)
         }
@@ -38,6 +39,14 @@ export default class FiltersSection extends HTMLElement{
             const max = formData.get("max");
             page.redirect(`/search?min=${min}&max=${max}`);
         });
+    }
 
+    #setSelectCategorias(shadow){
+        const select = shadow.querySelector("select-component");
+        select.setOnChange(() =>{
+            console.log("ea")
+            const value = select.getValue();
+            page.redirect(`/search?category=${value}`)
+        })
     }
 }

@@ -2,7 +2,7 @@ import CartComponent from "../cart/cart.js";
 import { headerSignIn } from "./header-signin.js";
 import { headerSignOut } from "./header-signout.js";
 import { headerSignInUser } from "./header-signin-user.js";
-import { getToken } from "../../services/sessionService.js";
+import { getToken, removeToken } from "../../services/sessionService.js";
 
 export default class HeaderComponent extends HTMLElement{
     constructor(){
@@ -51,7 +51,7 @@ export default class HeaderComponent extends HTMLElement{
             sessionStorage.removeItem("token");
             localStorage.removeItem("user");
             localStorage.removeItem("type");
-
+            removeToken();
             this.#render(shadow);
 
         })

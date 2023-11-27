@@ -13,7 +13,7 @@ export default class ToastComponent extends HTMLElement{
 
     async #render(){
         try{
-            const response = await fetch("./components/toast/toast.html");
+            const response = await fetch("/components/toast/toast.html");
             const html = await response.text();
             this.shadowRoot.innerHTML = html;
         } catch(error){
@@ -21,7 +21,7 @@ export default class ToastComponent extends HTMLElement{
         }
     }
 
-    showToast(message,  type, callback=()=>{}) {
+    showToast(message,  type, callback=()=>{}, seconds=5000) {
         const template = this.shadowRoot.querySelector("#toast-template");
         let clone = template.content.cloneNode(true);
         const icon = type === "success"? successIcon : errorIcon;
@@ -38,6 +38,6 @@ export default class ToastComponent extends HTMLElement{
         setTimeout(() =>{
             toast.remove();
             callback();
-        }, 5000)
+        }, seconds)
     }
 }

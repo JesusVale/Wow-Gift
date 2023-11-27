@@ -25,11 +25,11 @@ export default class SelectCategorias extends HTMLElement{
 
     async #render(){
         try{   
-            const response = await fetch("./components/select-component/select.html");
+            const response = await fetch("/components/select-component/select.html");
             const html = await response.text();
             this.shadow.innerHTML = html;
             this.#setValues();
-            this.#setOnChange();
+            //this.#setOnChange();
         } catch(error){
             console.log("error Loading html" + error)
         }
@@ -47,19 +47,32 @@ export default class SelectCategorias extends HTMLElement{
         })
     }
 
-    #setOnChange(){
+    getValue(){
         const select = this.shadow.querySelector(".select__control");
+        return select.value;
+    }
 
-        select.addEventListener("change", e =>{
-            const value = select.value;
+    setValue(categoria){
+        const option = this.shadow.querySelector(`option[value="${categoria}"]`);
+        option.selected = true
+    }
 
-            /*const url = new URL(window.location.href);
-            url.searchParams.set("category", value);
+    reset(){
+        const select = this.shadow.querySelector(".select__control");
+        select.selectedIndex = 0;
+    }
 
-            window.history.pushState(null, null, url.href);*/
+    setOnChange(onchange){
+        const checkAndSetOnChange = () => {
+            const select = this.shadow.querySelector(".select__control");
+            if (select) {
+                select.addEventListener("change", onchange);
+            } else {
+                setTimeout(checkAndSetOnChange, 100); // Espera 100 milisegundos y vuelve a verificar
+            }
+        };
 
-            page.redirect(`/search?category=${value}`)
-        });
+        checkAndSetOnChange();
     }
 
 }

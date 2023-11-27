@@ -1,0 +1,89 @@
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+.modal-confirm {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.304);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    z-index: 100;
+    display: none;
+}
+
+.show-modal{
+    display: flex;
+}
+
+.modal__header{
+    background-color: #FF28A5;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.3rem;
+    gap: 0.5rem;
+}
+
+.modal-confirm__warning{
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.modal-confirm__content{
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem
+}
+
+.modal-confirm__modal{
+    background-color: white;
+    width: 500px;
+}
+
+.modal-confirm__buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem
+}
+
+.modal-confirm__button{
+    border: none;
+    background-color: gray;
+    color: white;
+    font-size: 1rem;
+    padding: 0.3rem;
+    transition: background-color .3s;
+}
+
+.modal-confirm__button:hover{
+    cursor: pointer;
+}
+
+.modal-confirm__button--confirm{
+    background-color: #FF28A5;
+}
+
+.modal-confirm__button--confirm:hover{
+    background-color: #fd4eb4;;
+}
+
+.modal-confirm__button--discard{
+    background-color: #D85261;
+}
+
+.modal-confirm__button--discard:hover {
+    background-color: rgb(224, 104, 118);
+}
