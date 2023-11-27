@@ -10,6 +10,7 @@ export default class CartComponent extends HTMLElement{
     connectedCallback(){
         const shadow = this.attachShadow({mode: "open"})
         this.#render(shadow);
+        this.total = 0;
         window.addEventListener("addToCart", () =>{
             this.#mostrarArticulos(shadow);
         })
@@ -45,6 +46,7 @@ export default class CartComponent extends HTMLElement{
         const productosCarrito = await obtenerCarrito( getToken() );
         const contenedor = shadow.querySelector(".cart__products");
         const template = shadow.querySelector("#productcmp");
+        const totalElement = shadow.querySelector(".cart-product__totalPrice");
 
         contenedor.innerHTML = ""
 
@@ -52,9 +54,12 @@ export default class CartComponent extends HTMLElement{
             
             this.#obtenerArticulo(template, contenedor, carrito, shadow);
         });
+
+        totalElement.textContent = "$"+this.total;
     }
 
     async #obtenerArticulo(template, contenedor, carrito, shadow){
+        const totalElement = shadow.querySelector(".cart-product__totalPrice");
         const {nombre, imagen, precio, _id} = carrito.articulo;
         let clone = template.content.cloneNode(true)
         const nombreElement = clone.querySelector(".cart-product__name");
@@ -62,12 +67,37 @@ export default class CartComponent extends HTMLElement{
         const imagenElement = clone.querySelector(".cart-product__img")
         const cantidadElement = clone.querySelector(".cart-product__input");
         const deleteCartBtn = clone.querySelector(".cart-product__remove");
+
+        const addBtn = clone.querySelector(".cart-product__qbutton--add");
+        const removeBtn = clone.querySelector(".cart-product__qbutton--remove");
+
+        this.total += carrito.cantidad * precio;
+
         deleteCartBtn.addEventListener("click", async () =>{
             await eliminarArticuloCarrito(getToken(), _id);
             this.#mostrarArticulos(shadow);
         })
+
+        addBtn.addEventListener("click", async (e) =>{
+            e.preventDefault();
+            const newValue = Number(cantidadElement.value)+1;
+            await actualizarArticuloCarrito(getToken(), newValue, _id)
+            cantidadElement.value = newValue;
+            this.total += precio;
+            totalElement.textContent = "$"+this.total;
+        })
+
+        removeBtn.addEventListener("click", async (e) =>{
+            e.preventDefault();
+            const newValue = Number(cantidadElement.value)-1;
+            await actualizarArticuloCarrito(getToken(), newValue, _id)
+            cantidadElement.value = newValue;
+            this.total -= precio;
+            totalElement.textContent = "$"+this.total;
+        })
+
         nombreElement.textContent = nombre;
-        precioElement.textContent = precio;
+        precioElement.textContent = "$"+precio;
         imagenElement.src = imagen;
         cantidadElement.value = carrito.cantidad;
         contenedor.appendChild(clone);
