@@ -14,6 +14,16 @@ const PATHS = [
 		path: "/signup",
 		title: "Wow Gift | Registrarse",
 		name: "signup",
+	},
+	{
+		path: "/article-form",
+		title: "Wow Gift | Crear Artículo",
+		name: "article-form",
+	},
+	{
+		path: "/articles",
+		title: "Wow Gift | Mis Artículos",
+		name: "articles",
 	}
 
 ]
@@ -22,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 	page("/search", cargarPaginaSearch);
 	page("/article/:id", cargarPaginaArticle);
+	page("/article-form/:id", cargarPaginaArticleForm);
 	PATHS.forEach(({path, title, name}) =>{
 		page(path, async (ctx, next) => cargarPagina(name, title));
 	})
@@ -83,6 +94,12 @@ async function cargarPaginaArticle(ctx, next){
 
 	next();
 	
+}
+
+async function cargarPaginaArticleForm(ctx, next){
+	const container = document.querySelector(".content");
+	const {id} = ctx.params;
+	container.innerHTML = `<article-form article=${id}></article-form>`
 }
 
 function getSearchParams(queryString){

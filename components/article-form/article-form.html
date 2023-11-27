@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/components/article-form/article-form.css">
+<form class="create-article">
+    <h1 class="create-article__heading">Crear Artículo</h1>
+    <div class="create-article__fields">
+
+        <div class="create-article__field">
+            <label for="nombre" class="create-article__label">Nombre</label>
+            <input placeholder="Nombre" name="nombre" type="text" class="create-article__input create-article__input--nombre">
+        </div>
+
+        <div class="create-article__field">
+            <label for="descripcion" class="create-article__label">Descripción</label>
+            <textarea placeholder="Descripción" name="descripcion" class="create-article__input create-article__input--descripcion"></textarea>
+        </div>
+
+        <div class="create-article__field">
+            <label for="calle" class="create-article__label">Dirección</label>
+            <div class="create-article__address">
+                <input type="text" placeholder="Calle" name="calle" class="create-article__input create-article__input--calle">
+                <input type="text" placeholder="Colonia" name="colonia" class="create-article__input create-article__input--colonia">
+                <input type="text" placeholder="Ciudad" name="ciudad" class="create-article__input create-article__input--ciudad">
+                <input type="text" placeholder="Código Postal" name="codigo_postal" class="create-article__input create-article__input--codigo">
+                <input type="text" placeholder="Número Exterior" name="numero_exterior" class="create-article__input create-article__input--num">
+            </div>
+        </div>
+
+
+            <div class="create-article__field">
+                <label for="precio" class="create-article__label">Precio</label>
+
+                <div class="create-article__double">
+                    <input type="number" name="precio" placeholder="Precio" class="create-article__input create-article__input--price">
+                    <span class="create-article__stock">
+                        <label for="stock" class="create-article__label">Stock</label>
+                        <input type="number" name="stock" placeholder="Cantidad" class="create-article__input create-article__input--stock">
+                    </span> 
+                </div>
+                
+            </div>
+
+
+        <div class="create-article__field">
+            <span class="create-article__label">Categoria</span>
+            <select-component></select-component>
+        </div>
+
+        <div class="create-article__field">
+            <span class="create-article__label">Imagen</span>
+            <div class="create-article__fileControls">
+                <div class="create-article__file">
+                    <div class="create-article__fileControl">
+                        <label for="imagen" class="create-article__file">Subir Archivo</label>
+                        <input type="file" accept="image/*" id="imagen" name="imagen" class="create-article__inputFile">
+                    </div> 
+                </div>
+                <div class="image-sample"></div>
+            </div>
+        </div>
+
+        <button class="create-article__submit">Añadir</button>
+
+    </div>
+    <toast-component></toast-component>
+</form>

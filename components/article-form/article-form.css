@@ -1,0 +1,132 @@
+input[type="file"]{
+    position: absolute;
+    visibility: hidden;
+}
+
+.create-article{
+    width: 60%;
+    margin: 1rem auto;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+}
+
+.create-article__heading{
+    margin: 0;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+}
+
+.create-article__label{
+    font-weight: bold;
+}
+
+
+.create-article__fields{
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+}
+
+.create-article__field{
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.create-article__input{
+    border: none;
+    background-color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+}
+
+.create-article__input:focus{
+    outline: none;
+}
+
+.create-article__input::placeholder{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.404);
+    
+}
+
+.create-article__double{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 1.3rem
+}
+
+.create-article__stock{
+    display: flex;
+    gap: 1rem;
+
+}
+
+.create-article__stock input{
+    flex-grow: 1;
+}
+
+.create-article__input--descripcion{
+    resize: none;
+    height: 100px;
+}
+
+.create-article__address{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);    
+    gap: 1rem;
+}
+
+.create-article__file{
+    background-color: #FF28A5;
+    color: white;
+    padding: 0.4rem 0.5rem;
+    width: fit-content;
+    border-radius: 0.4rem;
+    height: fit-content;
+    transition: background-color .3s;
+}
+
+.create-article__file:hover{
+    cursor: pointer;
+    background-color: #ff0095;
+}
+
+.image-sample{
+    margin-bottom: 1rem;
+    background-color: rgb(255, 255, 255);
+    width: 110px;
+    height: 110px;
+}
+
+.create-article__fileControls{
+    display: flex;
+    gap: 1rem;
+}
+
+.create-article__submit{
+    width: fit-content;
+    align-self: flex-end;
+    background-color: #FF28A5;
+    color: white;
+    padding: 0.4rem 1.3rem;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    transition: background-color .3s;
+}
+
+.create-article__submit:hover{
+    cursor: pointer;
+    background-color: #ff0095;
+}
+
+.create-article__image{
+    width: 100%;
+    height: 100%;
+}
