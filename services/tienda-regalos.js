@@ -26,8 +26,8 @@ async function agregarArticuloCarrito(token, articulo){
     return carrito;   
 }
 
-async function actualizarArticuloCarrito(token, cantidad){
-    const reponse = await fetch(`${URL}/carrito`, {
+async function actualizarArticuloCarrito(token, cantidad, articulo){
+    const reponse = await fetch(`${URL}/carrito/${articulo}`, {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json',
@@ -107,10 +107,56 @@ async function obtenerArticulosPorPrecio(min, max){
     return articulos; 
 }
 
+async function obtenerArticulos(token) {
+    const reponse = await fetch(`${URL}/articulos/search/administrador`, {
+        method: `GET`,
+        headers: {
+            'Authorization': token
+        }
+    })
+    const articulos = await reponse.json();
+    return articulos; 
+}
+
 async function obtenerComentariosPorArticulo(articulo){
     const reponse = await fetch(`${URL}/comentarios/${articulo}`)
     const comentarios = await reponse.json();
     return comentarios; 
+}
+
+async function crearArticulo(formData, token){
+    const reponse = await fetch(`${URL}/articulos`, {
+        method: `POST`,
+        headers: {
+            'Authorization': token 
+        },
+        body: formData
+    })
+    const articulo = await reponse.json();
+    return articulo; 
+}
+
+async function eliminarArticulo(id, token){
+    const reponse = await fetch(`${URL}/articulos/${id}`, {
+        method: `DELETE`,
+        headers: {
+            'Authorization': token 
+        }
+    })
+    const articulo = await reponse.json();
+    return articulo; 
+}
+
+async function actualizarArticulo(formData, id, token){
+    const reponse = await fetch(`${URL}/articulos/${id}`, {
+        method: `PUT`,
+        headers: {
+            'Authorization': token 
+        },
+        body: formData
+    })
+    const articulo = await reponse.json();
+    return articulo; 
 }
 
 export {
@@ -125,5 +171,9 @@ export {
     agregarArticuloCarrito,
     actualizarArticuloCarrito,
     eliminarArticuloCarrito,
-    obtenerComentariosPorArticulo
+    obtenerComentariosPorArticulo,
+    crearArticulo,
+    obtenerArticulos,
+    eliminarArticulo,
+    actualizarArticulo
 }

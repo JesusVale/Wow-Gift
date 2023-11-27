@@ -1,4 +1,4 @@
-import { obtenerArticuloPorId, agregarArticuloCarrito } from "../../services/tienda-regalos.js";
+import { obtenerArticuloPorId, agregarArticuloCarrito, obtenerArticulos } from "../../services/tienda-regalos.js";
 import { getToken } from "../../services/sessionService.js";
 
 export default class ArticleDetail extends HTMLElement{
@@ -38,7 +38,7 @@ export default class ArticleDetail extends HTMLElement{
 
         nameElement.textContent = nombre;
 
-        priceElement.textContent = precio;
+        priceElement.textContent = `$${precio}`;
 
         ratingElement.setAttribute("rating", rating)
 
