@@ -1,3 +1,4 @@
+import { getToken } from "../services/sessionService.js";
 
 const PATHS = [
 	{
@@ -19,11 +20,13 @@ const PATHS = [
 		path: "/article-form",
 		title: "Wow Gift | Crear Artículo",
 		name: "article-form",
+		type: "sesion"
 	},
 	{
 		path: "/articles",
 		title: "Wow Gift | Mis Artículos",
 		name: "articles",
+		type: "sesion"
 	}
 
 ]
@@ -33,8 +36,14 @@ document.addEventListener("DOMContentLoaded", () =>{
 	page("/search", cargarPaginaSearch);
 	page("/article/:id", cargarPaginaArticle);
 	page("/article-form/:id", cargarPaginaArticleForm);
-	PATHS.forEach(({path, title, name}) =>{
-		page(path, async (ctx, next) => cargarPagina(name, title));
+	PATHS.forEach(({path, title, name, type}) =>{
+		page(path, async (ctx, next) => {
+			if(type === "sesion" && !getToken()) {
+				page.redirect("/")
+				return;
+			}
+			cargarPagina(name, title)
+		});
 	})
 	page.start();
 })
@@ -97,6 +106,12 @@ async function cargarPaginaArticle(ctx, next){
 }
 
 async function cargarPaginaArticleForm(ctx, next){
+
+	if(!getToken()) {
+		page.redirect("/")
+		return;
+	}
+
 	const container = document.querySelector(".content");
 	const {id} = ctx.params;
 	container.innerHTML = `<article-form article=${id}></article-form>`
