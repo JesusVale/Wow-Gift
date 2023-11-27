@@ -19,7 +19,19 @@ function getToken(){
     return null;
 }
 
+function removeToken(){
+    const fechaCaducidad = new Date();
+    fechaCaducidad.setFullYear(fechaCaducidad.getFullYear() - 1);
+
+    // Crea la cadena de cookie con fecha de caducidad en el pasado
+    const cookieCaducada = nameValue + "=;expires=" + fechaCaducidad.toUTCString() + ";path=/";
+
+    // Establece la cookie caducada
+    document.cookie = cookieCaducada;
+}
+
 export {
     setToken,
-    getToken
+    getToken,
+    removeToken
 }
