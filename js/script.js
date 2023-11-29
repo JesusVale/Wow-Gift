@@ -16,6 +16,7 @@ import CommentSection from "../components/comment-section/comment.js";
 import ArticleForm from "../components/article-form/article-form.js";
 import ArticleSection from "../components/articles-section/article.js";
 import ConfirmModal from "../components/confirm-modal/confirm.js";
+import ShippingDetail from "../components/shipping-detail/shipping.js";
 
 customElements.define("header-component", HeaderComponent);
 customElements.define("category-nav", CategoryNav);
@@ -35,3 +36,4 @@ customElements.define("article-detail", ArticleDetail);
 customElements.define("comment-section", CommentSection);
 customElements.define("article-form", ArticleForm);
 customElements.define("article-section", ArticleSection);
+customElements.define("shipping-detail", ShippingDetail);

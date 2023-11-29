@@ -159,6 +159,17 @@ async function actualizarArticulo(formData, id, token){
     return articulo; 
 }
 
+async function obtenerEnvioPorId(id, token){
+    const reponse = await fetch(`${URL}/envios/${id}`, {
+        method: 'GET',
+        headers:{
+            'Authorization': token
+        }
+    })
+    const carrito = await reponse.json();
+    return carrito; 
+}
+
 export {
     obtenerCarrito,
     login,
@@ -175,5 +186,6 @@ export {
     crearArticulo,
     obtenerArticulos,
     eliminarArticulo,
-    actualizarArticulo
+    actualizarArticulo,
+    obtenerEnvioPorId
 }
