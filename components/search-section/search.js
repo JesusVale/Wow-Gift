@@ -37,7 +37,38 @@ export default class SearchComponent extends HTMLElement{
             productos = await obtenerArticulosPorPrecio(Number(min), Number(max));
         }
 
-        const template = this.shadowRoot.querySelector("#product");
+        const setProductsOnChange = () =>{
+            const template = this.shadowRoot.querySelector("#product");
+            
+            if(template){
+                const container = this.shadowRoot.querySelector(".products");
+                container.innerHTML = ""
+
+                productos.forEach(({_id, nombre, rating, precio, imagen}) =>{
+                    let clone = template.content.cloneNode(true);
+                    const linkElement = clone.querySelector(".product-link");
+                    const nameElement = clone.querySelector(".product__name");
+                    const priceElement = clone.querySelector(".product__price");
+                    const imagenElement = clone.querySelector(".product__img");
+                    const ratingElement = clone.querySelector("stars-component");
+
+                    linkElement.href = `/article/${_id}`;
+                    nameElement.textContent = nombre;
+                    priceElement.textContent = `$${precio}`;
+                    imagenElement.src = imagen;
+                    imagenElement.alt = nombre;
+                    ratingElement.setAttribute("rating", rating);
+                    container.appendChild(clone);
+
+                })
+            } else {
+                setTimeout(setProductsOnChange, 100)
+            }
+        }
+
+        setProductsOnChange();
+
+        /*const template = this.shadowRoot.querySelector("#product");
         const container = this.shadowRoot.querySelector(".products");
         container.innerHTML = ""
 
@@ -57,7 +88,7 @@ export default class SearchComponent extends HTMLElement{
             ratingElement.setAttribute("rating", rating);
             container.appendChild(clone);
 
-        })
+        })*/
     }
 
 }

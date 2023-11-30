@@ -13,16 +13,19 @@ export default class CommentSection extends HTMLElement{
     }
 
     async #render(shadow){
+
+        const id = this.getAttribute("id");
+        const comments = await obtenerComentariosPorArticulo(id);
+        if(comments.length === 0){
+            return;
+        }
         try{
             const response = await fetch("/components/comment-section/comment.html"); 
             const html = await response.text();
             shadow.innerHTML = html;
-
-            const id = this.getAttribute("id");
-            const comments = await obtenerComentariosPorArticulo(id);
             this.#renderComments(shadow, comments);
             this.#renderRatingBars(shadow, comments);
-            this.#setRatingInfo(shadow);
+            this.#setRatingInfo(shadow);    
 
         } catch(error){
             console.log("error Loading html" + error)
