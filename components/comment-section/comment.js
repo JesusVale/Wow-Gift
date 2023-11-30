@@ -37,6 +37,10 @@ export default class CommentSection extends HTMLElement{
         
         const template = shadow.querySelector("#comment-article")
         const container = shadow.querySelector(".comentarios__main")
+
+        const totalComentarios = shadow.querySelector(".comentarios__total");
+        totalComentarios.textContent = `${comments.length} Calificaciones`;
+
         comments.forEach(({rating, createdAt, descripcion}) => {
             let clone = template.content.cloneNode(true);
             const ratingElement = clone.querySelector("stars-component");
