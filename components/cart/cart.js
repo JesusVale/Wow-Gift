@@ -90,6 +90,9 @@ export default class CartComponent extends HTMLElement{
         removeBtn.addEventListener("click", async (e) =>{
             e.preventDefault();
             const newValue = Number(cantidadElement.value)-1;
+            if(newValue === 0){
+                return;
+            }
             await actualizarArticuloCarrito(getToken(), newValue, _id)
             cantidadElement.value = newValue;
             this.total -= precio;
