@@ -17,9 +17,9 @@ const PATHS = [
 		name: "signup",
 	},
 	{
-		path: "/article-form",
+		path: "/resenas",
 		title: "Wow Gift | Crear Artículo",
-		name: "article-form",
+		name: "resenas",
 		type: "sesion"
 	},
 	{
