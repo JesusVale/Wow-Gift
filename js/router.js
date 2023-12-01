@@ -17,9 +17,9 @@ const PATHS = [
 		name: "signup",
 	},
 	{
-		path: "/resenas",
+		path: "/article-form",
 		title: "Wow Gift | Crear Artículo",
-		name: "resenas",
+		name: "article-form",
 		type: "sesion"
 	},
 	{
@@ -32,6 +32,12 @@ const PATHS = [
 		path: "/shipping",
 		title: "Wow Gift | Envio",
 		name: "shipping",
+		type: "sesion"
+	},
+    {
+		path: "/feedback",
+		title: "Wow Gift | Reseña",
+		name: "feedback",
 		type: "sesion"
 	}
 
