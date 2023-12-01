@@ -33,6 +33,12 @@ const PATHS = [
 		title: "Wow Gift | Envio",
 		name: "shipping",
 		type: "sesion"
+	},
+    {
+		path: "/feedback",
+		title: "Wow Gift | Reseña",
+		name: "feedback",
+		type: "sesion"
 	}
 
 ]

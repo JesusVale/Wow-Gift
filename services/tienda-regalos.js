@@ -166,8 +166,19 @@ async function obtenerEnvioPorId(id, token){
             'Authorization': token
         }
     })
-    const carrito = await reponse.json();
-    return carrito; 
+    const envio = await reponse.json();
+    return envio; 
+}
+
+async function crearResena(token, articulo) {
+    const reponse = await fetch(`${URL}/resena/${articulo}`, {
+        method: 'PUT',
+        headers:{
+            'Authorization': token
+        }
+    })
+    const resena = await reponse.json();
+    return resena; 
 }
 
 export {
@@ -187,5 +198,6 @@ export {
     obtenerArticulos,
     eliminarArticulo,
     actualizarArticulo,
-    obtenerEnvioPorId
+    obtenerEnvioPorId,
+    crearResena
 }
