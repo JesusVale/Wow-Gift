@@ -170,15 +170,34 @@ async function obtenerEnvioPorId(id, token){
     return envio; 
 }
 
-async function crearResena(token, articulo) {
-    const reponse = await fetch(`${URL}/resena/${articulo}`, {
-        method: 'PUT',
+async function crearResena(token, feedbackForm, articulo) {
+    const reponse = await fetch(`${URL}/resenas/${articulo}`, {
+        method: 'POST',
         headers:{
             'Authorization': token
-        }
+        },
+        body: feedbackForm
     })
     const resena = await reponse.json();
     return resena; 
+}
+/*
+async function actualizarResena(token, feedbackForm, articulo, id) {
+    const reponse = await fetch(`${URL}/resenas/${articulo}/${id}`, {
+        method: `PUT`,
+        headers: {
+            'Authorization': token
+        },
+        body: feedbackForm
+    })
+    const resena = await reponse.json();
+    return resena;
+}
+*/
+async function obtenerResenaPorId(articulo, id) {
+    const reponse = await fetch(`${URL}/resenas/${articulo}/${id}`)
+    const resena = await reponse.json();
+    return resena;
 }
 
 export {
@@ -199,5 +218,7 @@ export {
     eliminarArticulo,
     actualizarArticulo,
     obtenerEnvioPorId,
-    crearResena
+    crearResena,/*
+    actualizarResena,*/
+    obtenerResenaPorId
 }

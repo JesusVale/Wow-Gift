@@ -1,5 +1,5 @@
 import { getToken } from "../../services/sessionService.js";
-import { obtenerEnvioPorId } from "../../services/tienda-regalos.js";
+import { obtenerEnvioPorId, crearResena, obtenerResenaPorId/*, actualizarResena*/ } from "../../services/tienda-regalos.js";
 
 export default class ArticleFeedback extends HTMLElement {
     constructor() {
@@ -7,7 +7,7 @@ export default class ArticleFeedback extends HTMLElement {
     }
 
     connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" })
+        const shadow = this.attachShadow({ mode: "open" });
         this.#render(shadow);
     }
 
@@ -18,15 +18,22 @@ export default class ArticleFeedback extends HTMLElement {
             shadow.innerHTML = html;
             this.#mostrarEnvio(shadow);
             this.#setFeedbackForm(shadow);
+            //aquí yo pegué el modo editar del archivo article-form.js y lo adapté pero no sé si se puede hacer eso porque requiere qu ecada reseña tenga un id
+            if (this.getAttribute("article") && this.getAttribute("id")) {
+                const resena = await obtenerResenaPorId(this.getAttribute("article"), this.getAttribute("id"));
+                this.#setDataFeedbackForm(shadow, resena);
+                console.log("modo editar");
+            }
         }
         catch (error) {
-            console.log("error Loading html" + error)
+            console.log("error Loading html" + error);
         }
     }
 
-    async function setRadio(shadow){
+    async function setRadio(stars){
         // Select all elements with the "i" tag and store them in a NodeList called "stars"
-        const stars = shadow.querySelectorAll(".stars i");
+        //const stars = shadow.querySelectorAll(".stars i");
+
         const countStars = 0;
         // Loop through the "stars" NodeList
         stars.forEach((star, index1) => {
@@ -40,28 +47,51 @@ export default class ArticleFeedback extends HTMLElement {
                 });
             });
         });
-        stars.forEach((star, index) => {
+
+        stars.forEach((star) => {
             if (star.classList.contains("active") == true) { countStars += 1; }
         });
+
         return countStars;
     }
 
-    async #setFeedbackForm(shadow){
+    async #setSubmitFeedbackForm(shadow){
         //Mi idea era: 1. yo escucho a la pagina create-article
         //              2. yo guardo la descripcion y el valor de las estrellas (en algun lugar en la base de datos a lo mejor)
         //              3. y listop!
-        const form = shadow.querySelector(".create-article");
+        const form = shadow.querySelector(".article-feedback");
+        
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            const formData = new FormData(e.target);
 
-            const descripcionElement = shadow.querySelector(".article-feedback__input--descripcion");
-            descripcionElement.value = descripcion;
-            const starsNum = setRadio(shadow);
+            const descripcionElement = form.querySelector(".article-feedback__input--descripcion");
+            const starsElement = form.querySelectorAll(".stars i");
 
-            const { descripcion, starsNum } = feedbackForm;
-            #guardar(shadow, feedbackForm)
-        }
+            const descripcion = JSON.stringify(descripcionElement);
+            const stars = setRadio(starsElement);
+
+            const feedbackForm = { descripcion, stars };
+
+            try {
+                this.#guardar(shadow, feedbackForm);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    async #setDataFeedbackForm(shadow, resena){
+        const { descripcion, stars } = resena;
+
+        this.#mostrarImagen(imagen, shadow);
+
+        const descripcionElement = shadow.querySelector(".article-feedback__input--descripcion");
+        descripcionElement.value = descripcion;
+
+        const starsElement = shadow.querySelectorAll(".stars i");
+        starsElement.value = stars;
+
+    }
 
     async #mostrarEnvio(shadow){
         const id = this.getAttribute("id"); //Tomamos el id del atributo
@@ -77,6 +107,23 @@ export default class ArticleFeedback extends HTMLElement {
 
         const imagenProductoElement = shadow.querySelector(".article-detail__img");
         imagenProductoElement.src = imagen;
+    }
+
+    async #guardar(shadow, formData){
+        const token = getToken();
+        const toast = shadow.querySelector("toast-component");
+        const form = shadow.querySelector(".article-feedback");
+        if (this.getAttribute("article")){
+
+            const resena = await crearResena(token, form, this.getAttribute("article"));
+            if (resena.msg) {
+                toast.showToast(info.msg);
+                return;
+            }
+            toast.showToast("Se agragó la reseña correctamente", "success", () => {
+                page.redirect("/");
+            }, 2000);
+        } 
     }
 
 }
