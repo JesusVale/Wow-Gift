@@ -27,14 +27,7 @@ const PATHS = [
 		title: "Wow Gift | Mis Artículos",
 		name: "articles",
 		type: "sesion"
-	},
-	{
-		path: "/shipping",
-		title: "Wow Gift | Envio",
-		name: "shipping",
-		type: "sesion"
 	}
-
 ]
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -42,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () =>{
 	page("/search", cargarPaginaSearch);
 	page("/article/:id", cargarPaginaArticle);
 	page("/article-form/:id", cargarPaginaArticleForm);
+	page("/comment-form/:article", cargarCommentForm);
+	page("/shipping/:shipping", cargarShipping);
 	PATHS.forEach(({path, title, name, type}) =>{
 		page(path, async (ctx, next) => {
 			if(type === "sesion" && !getToken()) {
@@ -111,7 +106,7 @@ async function cargarPaginaArticle(ctx, next){
 	
 }
 
-async function cargarPaginaArticleForm(ctx, next){
+function cargarPaginaArticleForm(ctx){
 
 	if(!getToken()) {
 		page.redirect("/")
@@ -121,6 +116,28 @@ async function cargarPaginaArticleForm(ctx, next){
 	const container = document.querySelector(".content");
 	const {id} = ctx.params;
 	container.innerHTML = `<article-form article=${id}></article-form>`
+}
+
+function cargarCommentForm(ctx){
+	if(!getToken()) {
+		page.redirect("/")
+		return;
+	}
+
+	const container = document.querySelector(".content");
+	const { article } = ctx.params;
+	container.innerHTML = `<comment-form article=${article}></comment-form>`
+}
+
+function cargarShipping(ctx){
+	if(!getToken()) {
+		page.redirect("/")
+		return;
+	}
+
+	const container = document.querySelector(".content");
+	const { shipping } = ctx.params;
+	container.innerHTML = `<shipping-detail shipping=${shipping}></shipping-detail>`
 }
 
 function getSearchParams(queryString){

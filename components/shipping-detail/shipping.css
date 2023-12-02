@@ -105,3 +105,20 @@ img{
     color: initial;
     font-size: 1.7rem;
 }
+
+.shipping-detail__desc--destino{
+    display: flex;
+    gap: 1rem;
+}
+
+.shipping-detail__desc--estado.in-process {
+    color: red
+}
+
+.shipping-detail__desc--estado.on-the-way {
+    color: rgb(255, 208, 0);
+}
+
+.shipping-detail__desc--estado.delivered {
+    color: green;
+}
