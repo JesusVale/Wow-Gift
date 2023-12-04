@@ -38,4 +38,4 @@ customElements.define("comment-section", CommentSection);
 customElements.define("article-form", ArticleForm);
 customElements.define("article-section", ArticleSection);
 customElements.define("shipping-detail", ShippingDetail);
-customElements.define("creat-purchase", PurchaseSection);
+customElements.define("create-purchase", PurchaseSection);

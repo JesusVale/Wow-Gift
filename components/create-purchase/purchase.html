@@ -1,1 +1,36 @@
 <link rel="stylesheet" href="/components/create-purchase/purchase.css">
+<section class="cart__products"></section>
+<section class="cart__menu">
+    <div class="cart-product__total">
+        <span class="cart-product__totalTitle">Total:</span>
+        <span class="cart-product__totalPrice">$722</span>
+    </div>
+</section>
+<template id="productcmp">
+        <li class="cart-product">
+            <div class="cart-product__image">
+                <img src="https://s3.amazonaws.com/images.ecwid.com/images/22217770/1287930422.jpg" alt="Producto X" class="cart-product__img">
+            </div>
+            <div class="cart-product__info">
+                <div class="cart-product__titles">
+                                        <span class="cart-product__name">Nombre Producto</span>
+                    <button class="cart-product__remove">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" class="icon icon-tabler icon-tabler-x" stroke-width="2" stroke="rgba(0, 0, 0, 0.5)" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="5 5 14 14">    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>    <path d="M18 6l-12 12"></path>    <path d="M6 6l12 12"></path> </svg>
+                    </button>
+                </div>
+                <div class="cart-product__more">
+                    <span class="cart-product__price">$244</span>
+                    <form class="cart-product__quantity">
+                        <button class="cart-product__qbutton cart-product__qbutton--add">+</button>
+                        <input type="number" min="1" max="20" value="1" class="cart-product__input">
+                        <button class="cart-product__qbutton cart-product__qbutton--remove">-</button>
+                    </form>
+                </div>
+            </div>
+        </li> 
+</template>
+
+
+
+
+
