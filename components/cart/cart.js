@@ -12,6 +12,7 @@ export default class CartComponent extends HTMLElement{
         this.#render(shadow);
         this.total = 0;
         window.addEventListener("addToCart", () =>{
+            this.total = 0;
             this.#mostrarArticulos(shadow);
         })
     }
@@ -79,7 +80,8 @@ export default class CartComponent extends HTMLElement{
             await eliminarArticuloCarrito(getToken(), _id);
             const productCart = shadow.querySelector(`li[data-product="${_id}"]`);
             productCart.remove();
-            this.total -= precio*carrito.cantidad;
+            const cantidad = Number(productCart.querySelector(`.cart-product__input`).value);
+            this.total -= precio*cantidad;
             totalElement.textContent = "$"+this.total;
         })
 
