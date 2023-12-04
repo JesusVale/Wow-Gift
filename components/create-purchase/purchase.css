@@ -74,6 +74,9 @@ img{
     gap: 1.5rem;
     flex-grow: 1;
     overflow: auto;
+
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .cart-product{
@@ -136,6 +139,7 @@ img{
 .cart-product__price{
     font-size: 1.8rem;
     font-weight: bold;
+    
 }
 
 .cart-product__qbutton{
@@ -184,6 +188,8 @@ input[type='number']::-webkit-outer-spin-button{
     border-radius: 1rem;
     font-family: 'Lato', sans-serif;
     background-color: white;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .cart-product__total{
