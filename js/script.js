@@ -18,6 +18,7 @@ import ArticleSection from "../components/articles-section/article.js";
 import ConfirmModal from "../components/confirm-modal/confirm.js";
 import ShippingDetail from "../components/shipping-detail/shipping.js";
 import PurchaseSection from "../components/create-purchase/purchase.js";
+import PurchaseDone from "../components/purchase-done/done.js";
 
 customElements.define("header-component", HeaderComponent);
 customElements.define("category-nav", CategoryNav);
@@ -39,3 +40,4 @@ customElements.define("article-form", ArticleForm);
 customElements.define("article-section", ArticleSection);
 customElements.define("shipping-detail", ShippingDetail);
 customElements.define("create-purchase", PurchaseSection);
+customElements.define("purchase-done",PurchaseDone);
