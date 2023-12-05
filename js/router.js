@@ -44,6 +44,12 @@ const PATHS = [
 		title: "Wow Gift | Éxito",
 		name: "done",
 		type: "sesion"
+	},
+	{
+		path:"/shopping",
+		title: "Wow Gift | Mis Compras",
+		name: "shopping",
+		type: "sesion"
 	}
 
 
