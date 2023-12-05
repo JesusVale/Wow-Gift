@@ -38,11 +38,18 @@ export default class SearchComponent extends HTMLElement{
         }
 
         const setProductsOnChange = () =>{
+            
             const template = this.shadowRoot.querySelector("#product");
+
+            
             
             if(template){
                 const container = this.shadowRoot.querySelector(".products");
                 container.innerHTML = ""
+                if(productos.length === 0){
+                    this.setNoProductsFound(container);
+                    return;
+                }
 
                 productos.forEach(({_id, nombre, rating, precio, imagen}) =>{
                     let clone = template.content.cloneNode(true);
@@ -67,6 +74,14 @@ export default class SearchComponent extends HTMLElement{
         }
 
         setProductsOnChange();
+    }
+
+    setNoProductsFound(container){
+        const noProductsP = document.createElement("p");
+        noProductsP.textContent = "No se encontraron productos";
+        noProductsP.classList.add("no-products")
+        container.appendChild(noProductsP);
+
     }
 
 }

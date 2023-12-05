@@ -167,8 +167,21 @@ async function obtenerEnvioPorId(id, token){
             'Authorization': token
         }
     })
-    const carrito = await reponse.json();
-    return carrito; 
+    const envio = await reponse.json();
+    return envio; 
+}
+
+async function crearComentario(token, feedbackForm) {
+    const reponse = await fetch(`${URL}/comentarios`, {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(feedbackForm)
+    })
+    const resena = await reponse.json();
+    return resena; 
 }
 
 export {
@@ -188,5 +201,6 @@ export {
     obtenerArticulos,
     eliminarArticulo,
     actualizarArticulo,
-    obtenerEnvioPorId
+    obtenerEnvioPorId,
+    crearComentario,
 }

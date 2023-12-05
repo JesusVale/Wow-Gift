@@ -12,6 +12,7 @@ export default class CartComponent extends HTMLElement{
         this.#render(shadow);
         this.total = 0;
         window.addEventListener("addToCart", () =>{
+            this.total = 0;
             this.#mostrarArticulos(shadow);
         })
     }
@@ -62,6 +63,8 @@ export default class CartComponent extends HTMLElement{
         const totalElement = shadow.querySelector(".cart-product__totalPrice");
         const {nombre, imagen, precio, _id} = carrito.articulo;
         let clone = template.content.cloneNode(true)
+        const liElemento = clone.querySelector(".cart-product");
+        liElemento.dataset.product = _id;
         const nombreElement = clone.querySelector(".cart-product__name");
         const precioElement = clone.querySelector(".cart-product__price");
         const imagenElement = clone.querySelector(".cart-product__img")
@@ -75,7 +78,11 @@ export default class CartComponent extends HTMLElement{
 
         deleteCartBtn.addEventListener("click", async () =>{
             await eliminarArticuloCarrito(getToken(), _id);
-            this.#mostrarArticulos(shadow);
+            const productCart = shadow.querySelector(`li[data-product="${_id}"]`);
+            productCart.remove();
+            const cantidad = Number(productCart.querySelector(`.cart-product__input`).value);
+            this.total -= precio*cantidad;
+            totalElement.textContent = "$"+this.total;
         })
 
         addBtn.addEventListener("click", async (e) =>{
