@@ -159,6 +159,7 @@ async function actualizarArticulo(formData, id, token){
     return articulo; 
 }
 
+
 async function obtenerEnvioPorId(id, token){
     const reponse = await fetch(`${URL}/envios/${id}`, {
         method: 'GET',

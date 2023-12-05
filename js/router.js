@@ -27,6 +27,29 @@ const PATHS = [
 		title: "Wow Gift | Mis Artículos",
 		name: "articles",
 		type: "sesion"
+	},
+	{
+		path: "/shipping",
+		title: "Wow Gift | Envio",
+		name: "shipping",
+		type: "sesion"
+	},
+	{
+		path:"/purchase",
+		title:"Wow Gift | Comprar",
+		name: "purchase",
+		type: "sesion"
+	},{
+		path:"/done",
+		title: "Wow Gift | Éxito",
+		name: "done",
+		type: "sesion"
+	},
+	{
+		path:"/shopping",
+		title: "Wow Gift | Mis Compras",
+		name: "shopping",
+		type: "sesion"
 	}
 ]
 

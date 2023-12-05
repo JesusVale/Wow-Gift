@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/components/create-purchase/purchase.css">
+<section class="cart__products"></section>
+
+
+<section class="cart__menu">
+    <div class="cart-product__total">
+        <span class="cart-product__totalTitle">Total:</span>
+        <span class="cart-product__totalPrice">$999</span>
+    </div>
+    <section class="done">
+        <div class="done__container">
+            <p class="done_msg">Compra relizada con exito</p>
+        </div>
+    </section>
+    <a href="#" class="cart-product__pago">Seguir comprando</a>
+</section>
+
+
+<template id="productcmp">
+        <li class="cart-product">
+            <div class="cart-product__image">
+                <img src="https://s3.amazonaws.com/images.ecwid.com/images/22217770/1287930422.jpg" alt="Producto X" class="cart-product__img">
+            </div>
+            <div class="cart-product__info">
+                <div class="cart-product__titles">
+                    <span class="cart-product__name">Nombre Producto</span>
+                </div>
+                <div class="cart-product__more">
+                    <span class="cart-product__price">$244</span>
+                    <form class="cart-product__quantity">
+                        <input type="number" min="1" max="20" value="1" class="cart-product__input" disabled    >
+                    </form>
+                </div>
+            </div>
+        </li> 
+</template>
