@@ -14,14 +14,29 @@ export default class PurchaseSection extends HTMLElement{
             const html = await response.text();
             shadow.innerHTML = html;
             this.total = 0;
-            console.log(html);
             this.#mostrarArticulos(shadow);
+            this.#setEventListeners(shadow);
         } catch(error){
             console.log("error Loading html" + error)
         }
     }
 
-    //mostrar articulos del carrito
+    #setEventListeners(shadow){
+        const seguirCompraBtn = shadow.querySelector(".cart-product__pago");
+
+        seguirCompraBtn.addEventListener("click", (e) =>{
+            e.preventDefault();
+            const modal = shadow.querySelector("shopping-modal");
+            modal.mostrarModal();
+        })
+
+    }
+
+    #setTotalShoppingModal(shadow){
+        const shopping = shadow.querySelector("shopping-modal");
+        shopping.setAttribute("total", this.total);
+    }
+
     async #mostrarArticulos(shadow){
         const productosCarrito = await obtenerCarrito( getToken() );
         const contenedor = shadow.querySelector(".cart__products");
@@ -38,11 +53,12 @@ export default class PurchaseSection extends HTMLElement{
         totalElement.textContent = "$"+this.total;
     }
 
-    //Obtener los artiulos.
     async #obtenerArticulo(template, contenedor, carrito, shadow){
         const totalElement = shadow.querySelector(".cart-product__totalPrice");
         const {nombre, imagen, precio, _id} = carrito.articulo;
         let clone = template.content.cloneNode(true)
+        const liElemento = clone.querySelector(".cart-product");
+        liElemento.dataset.product = _id;
         const nombreElement = clone.querySelector(".cart-product__name");
         const precioElement = clone.querySelector(".cart-product__price");
         const imagenElement = clone.querySelector(".cart-product__img")
@@ -53,10 +69,16 @@ export default class PurchaseSection extends HTMLElement{
         const removeBtn = clone.querySelector(".cart-product__qbutton--remove");
 
         this.total += carrito.cantidad * precio;
+        this.#setTotalShoppingModal(shadow);
 
         deleteCartBtn.addEventListener("click", async () =>{
             await eliminarArticuloCarrito(getToken(), _id);
-            this.#mostrarArticulos(shadow);
+            const productCart = shadow.querySelector(`li[data-product="${_id}"]`);
+            productCart.remove();
+            const cantidad = Number(productCart.querySelector(`.cart-product__input`).value);
+            this.total -= precio*cantidad;
+            this.#setTotalShoppingModal(shadow);
+            totalElement.textContent = "$"+this.total;
         })
 
         addBtn.addEventListener("click", async (e) =>{
@@ -65,6 +87,7 @@ export default class PurchaseSection extends HTMLElement{
             await actualizarArticuloCarrito(getToken(), newValue, _id)
             cantidadElement.value = newValue;
             this.total += precio;
+            this.#setTotalShoppingModal(shadow);
             totalElement.textContent = "$"+this.total;
         })
 
@@ -77,6 +100,7 @@ export default class PurchaseSection extends HTMLElement{
             await actualizarArticuloCarrito(getToken(), newValue, _id)
             cantidadElement.value = newValue;
             this.total -= precio;
+            this.#setTotalShoppingModal(shadow);
             totalElement.textContent = "$"+this.total;
         })
 

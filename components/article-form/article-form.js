@@ -130,7 +130,6 @@ export default class ArticleForm extends HTMLElement{
         if(this.getAttribute("article")){
 
             if (inputFile.files.length === 0) {
-                console.log("????")
                 formData.delete("imagen");
             }
             const articulo = await actualizarArticulo(formData, this.getAttribute("article"), token);

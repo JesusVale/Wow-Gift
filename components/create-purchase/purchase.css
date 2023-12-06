@@ -1,4 +1,12 @@
 
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
 a{
     text-decoration: none;
 }
@@ -6,6 +14,30 @@ a{
 img{
     max-width: 100%;
     display: block;
+}
+
+h1, h2, h3{
+    margin: 0;
+}
+
+.purchase__container {
+    width: 75%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.5rem;
+}
+
+.purchase__products{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.323);
+}
+
+.purchase__heading{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
 }
 
 .cart__card{
@@ -75,15 +107,12 @@ img{
     flex-grow: 1;
     overflow: auto;
 
-    margin-left: 30%;
-    margin-right: 30%;
 }
 
 .cart-product{
     display: flex;
     gap: 0.8rem;
     font-family: 'Lato', sans-serif;
-    
 }
 
 .cart-product__image{
@@ -178,27 +207,33 @@ input[type='number']::-webkit-outer-spin-button{
 }
 
 .cart__menu{
-    
     display: flex;
+    flex-direction: column;
     font-weight: bold;
+    width: 100%;
+    height: fit-content;
+    border: 1px solid rgba(0, 0, 0, 0.323);
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 1rem 1.5rem 1rem;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
     border-top: 1px solid #00000039;
     border-radius: 1rem;
     font-family: 'Lato', sans-serif;
     background-color: white;
-    margin-left: 30%;
-    margin-right: 30%;
 }
 
 .cart-product__total{
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.344);
 }
 
 .cart-product__totalTitle{
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 .cart-product__totalPrice{
@@ -208,8 +243,9 @@ input[type='number']::-webkit-outer-spin-button{
 .cart-product__pago{
     color: white;
     background-color: #FF28A5;
-    padding: 0.5rem 1rem;
-    border-radius: 0.9rem;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
     font-size: 1.1rem;
     transition: background-color .3s;
 }
