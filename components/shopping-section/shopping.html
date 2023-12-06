@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/components/shopping-section/shopping.css">
 <main class="shopping">
     <div class="shopping__header">
         <h1 class="shopping__heading">Mis Compras</h1>
@@ -7,11 +8,11 @@
 
     <section class="shopping__container">
         <p class="shopping__date">4 de Octubre</p>
-        
+        <div class="shopping__articles">
+            
+        </div>
     </section>
-
 </main>
-
 <template id="shipping-template">
     <article class="shopping__article">
         <div class="shopping__product">
@@ -22,9 +23,12 @@
             <div class="shopping__info">
                 <h3 class="shopping__name">Producto Nombre</h3>
                 <p class="shopping__price">$200</p>
+                <div>
+                    <span class="shopping__bold">Cantidad: </span> <span class="shopping__cantidad">3</span>
+                </div>
+                
             </div>
         </div>
-
         <div class="shopping__shipping">
             <p class="shopping__state">En Camino</p>
             <p class="shopping__aprox">
@@ -33,7 +37,5 @@
             <a class="shopping__button shopping__detail">Detalle del envio</a>
             <a class="shopping__button shopping__comment">Añadir Reseña</a>
         </div>
-
-
     </article>
 </template>

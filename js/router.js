@@ -29,12 +29,6 @@ const PATHS = [
 		type: "sesion"
 	},
 	{
-		path: "/shipping",
-		title: "Wow Gift | Envio",
-		name: "shipping",
-		type: "sesion"
-	},
-	{
 		path:"/purchase",
 		title:"Wow Gift | Comprar",
 		name: "purchase",

@@ -21,6 +21,7 @@ import PurchaseSection from "../components/create-purchase/purchase.js";
 import PurchaseDone from "../components/purchase-done/done.js";
 import ShoppingSection from "../components/shopping-section/shopping.js";
 import CommentForm from "../components/comment-form/comment-form.js";
+import ShoppingModal from "../components/shopping-modal/shopping-modal.js";
 
 
 customElements.define("header-component", HeaderComponent);
@@ -41,6 +42,7 @@ customElements.define("article-detail", ArticleDetail);
 customElements.define("comment-section", CommentSection);
 customElements.define("article-form", ArticleForm);
 customElements.define("article-section", ArticleSection);
+customElements.define("shopping-modal", ShoppingModal);
 customElements.define("shipping-detail", ShippingDetail);
 customElements.define("create-purchase", PurchaseSection);
 customElements.define("purchase-done", PurchaseDone);

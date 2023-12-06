@@ -33,7 +33,11 @@ a{
 .shopping__container{
     background-color: #dadada;
     padding: 0.5rem 1.8rem 1rem;
+    border-radius: 0.5rem;
     min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .shopping__img{
@@ -45,8 +49,13 @@ a{
     font-weight: bold;
     font-size: 1.4rem;
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.641);
+}
+
+.shopping__articles{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .shopping__article{
@@ -86,7 +95,7 @@ a{
 
 .shopping__button{
     color: rgb(255, 255, 255);
-    background-color: #FF28A5;
+    background-color: #ff47b2;
     width: fit-content;
     padding: 0.3rem 0.7rem;
     border-radius: 0.5rem;
@@ -95,5 +104,27 @@ a{
 
 .shopping__button:hover{
     cursor: pointer;
-    background-color: #fb89cb;
+    background-color: #ff3bad;
+}
+
+.in-process {
+    color: red
+}
+
+.on-the-way {
+    color: rgb(196, 161, 2);
+}
+
+.delivered {
+    color: green;
+}
+
+.shopping__inputDate{
+    width: 17%;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 0.9rem;
+    font-family: 'Lato', sans-serif;
 }

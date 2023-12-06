@@ -184,6 +184,30 @@ async function crearComentario(token, feedbackForm) {
     return resena; 
 }
 
+async function obtenerEnviosPorFecha(fecha, token) {
+    const reponse = await fetch(`${URL}/envios/search/date/${fecha}`, {
+        method: 'GET',
+        headers:{
+            'Authorization': token
+        }
+    })
+    const envio = await reponse.json();
+    return envio; 
+}
+
+async function crearCompra(compraData, token){
+    const reponse = await fetch(`${URL}/compras`, {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(compraData)
+    })
+    const compra = await reponse.json();
+    return compra; 
+} 
+
 export {
     obtenerCarrito,
     login,
@@ -203,4 +227,6 @@ export {
     actualizarArticulo,
     obtenerEnvioPorId,
     crearComentario,
+    obtenerEnviosPorFecha,
+    crearCompra
 }

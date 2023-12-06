@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/components/shopping-modal/shopping-modal.css">
+<aside class="shopping-modal">
+    <div class="shopping-modal__content">
+        <h2 class="shopping-modal__heading">Realizar Compra</h2>
+        <form class="shopping-modal__form">
+            <div class="shopping-modal__campo">
+                <label for="metodo">Método de pago</label>
+                <div class="select-container">
+                    <select name="metodo" id="metodo" class="shopping-modal__metodo">
+                        <option value="">--Seleccionar--</option>
+                        <option value="debito/credito">Debito/Credito</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                    <div class="select-container__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="icon icon-tabler icon-tabler-chevron-down" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="5.25 8.25 13.5 7.5">   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>   <path d="M6 9l6 6l6 -6"></path> </svg>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="shopping-modal__campo shopping-modal__campo--direccion">
+                <label for="Direccion">Direccion</label>
+                <div class="shopping-modal--direccion">
+                    <input type="text" placeholder="Calle" name="calle" class="shopping-modal__input shopping-modal__input--calle">
+                    <input type="text" placeholder="Colonia" name="colonia" class="shopping-modal__input shopping-modal__input--colonia">
+                    <input type="text" placeholder="Ciudad" name="ciudad" class="shopping-modal__input shopping-modal__input--ciudad">
+                    <input type="text" placeholder="Código Postal" name="codigo_postal" class="shopping-modal__input shopping-modal__input--codigo">
+                    <input type="text" placeholder="Número Exterior" name="numero_exterior" class="shopping-modal__input shopping-modal__input--num">
+                </div>
+            </div>
+            <div class="shopping-modal__bottom">
+                <div class="shopping-modal__buttons">
+                    <button class="shopping-modal__button shopping-modal__button--confirmar" type="submit">Realizar Pago</button>
+                    <button class="shopping-modal__button shopping-modal__button--cancel" type="button">Cancelar</button>
+                </div>
+                <p class="shopping-modal__total">Total: $2333</p>
+            </div>
+        </form>
+    </div>
+</aside>
+<toast-component></toast-component>
